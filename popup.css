@@ -1,0 +1,245 @@
+/* Popup styles for Be Fit extension */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  width: 320px;
+  min-height: 400px;
+}
+
+.container {
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  margin: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 24px;
+  color: #4a90e2;
+  margin-bottom: 5px;
+}
+
+header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.status-section {
+  margin-bottom: 20px;
+}
+
+.status-indicator {
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.status-indicator.running {
+  background: #e8f5e8;
+  color: #2e7d2e;
+  border: 2px solid #4caf50;
+}
+
+.status-indicator.stopped {
+  background: #ffeaea;
+  color: #c62828;
+  border: 2px solid #f44336;
+}
+
+.controls-section {
+  margin-bottom: 20px;
+}
+
+.interval-control {
+  margin-bottom: 15px;
+}
+
+.interval-control label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.interval-control select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  transition: border-color 0.3s ease;
+}
+
+.interval-control select:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.interval-control select:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-start {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-start:hover:not(:disabled) {
+  background: #45a049;
+  transform: translateY(-1px);
+}
+
+.btn-stop {
+  background: #f44336;
+  color: white;
+}
+
+.btn-stop:hover:not(:disabled) {
+  background: #da190b;
+  transform: translateY(-1px);
+}
+
+.btn-test {
+  width: 100%;
+  background: #2196f3;
+  color: white;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.btn-test:hover {
+  background: #1976d2;
+}
+
+.info-section {
+  margin-bottom: 15px;
+}
+
+.last-reminder {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.tips {
+  background: #fff3cd;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid #ffc107;
+}
+
+.tips h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #856404;
+}
+
+.tips ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tips li {
+  font-size: 12px;
+  color: #856404;
+  margin-bottom: 4px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.tips li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ffc107;
+  font-weight: bold;
+}
+
+footer {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+/* Message styles */
+.message {
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.message-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.message-info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* Animation for status changes */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.status-indicator.running {
+  animation: pulse 2s infinite;
+}

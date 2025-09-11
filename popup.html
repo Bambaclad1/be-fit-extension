@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be Fit - Push-up Timer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>💪 Be Fit</h1>
+      <p>Push-up Timer</p>
+    </header>
+
+    <div class="status-section">
+      <div id="status-indicator" class="status-indicator stopped">
+        <span id="status-text">Timer Stopped</span>
+      </div>
+    </div>
+
+    <div class="controls-section">
+      <div class="interval-control">
+        <label for="interval-select">Reminder Interval:</label>
+        <select id="interval-select">
+          <option value="1">1 minute (testing)</option>
+          <option value="15">15 minutes</option>
+          <option value="30" selected>30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">1 hour</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button id="start-btn" class="btn btn-start">Start Timer</button>
+        <button id="stop-btn" class="btn btn-stop" disabled>Stop Timer</button>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div id="last-reminder" class="last-reminder">
+        <span>Last reminder: Never</span>
+      </div>
+      
+      <div class="tips">
+        <h3>💡 Quick Tips</h3>
+        <ul>
+          <li>Start with 5-10 push-ups</li>
+          <li>Focus on proper form</li>
+          <li>Take breaks when needed</li>
+          <li>Stay consistent!</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <button id="test-notification" class="btn btn-test">Test Notification</button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

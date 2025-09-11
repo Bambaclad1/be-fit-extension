@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Be Fit - Push-up Reminder",
+  "version": "1.0.0",
+  "description": "💪⏰ Browser extension that reminds you to do push-ups at regular intervals",
+  "permissions": [
+    "notifications",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Be Fit - Push-up Timer",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}
