@@ -1,7 +1,7 @@
 # be-fit push-up interval timer
 A free open-source browser extension that reminds everyone staring at a screen to stay fit and drop 20.
 
-Why? Because we should care about our health. Studies show that sitting too much weakens your joints, muscles, and overall energy. The least you can do is drop some push-ups—and eventually, add stretching and mini workouts into your daily grind.
+Why? Because we should care about our health. Studies show that sitting too much weakens your joints, muscles, and overall energy. The least you can do is drop some push-ups and eventually, add stretching and mini workouts into your daily grind.
 
 
 ## Why did i make this?
