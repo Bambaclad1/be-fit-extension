@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
     <title>be-fit popup</title>
 </head>
 
@@ -33,8 +28,8 @@
                             <span>interval timer</span>
                             <span class="range-value" data-suffix=" min"></span>
                         </div>
-                        <input type="range" min="5" max="60" value="15">
-                    </div>
+                        <input id="intervalTimer" type="range" min="5" max="60" value="15">
+                    </div>  
 
                     <div class="setting">
                         <div class="row">
@@ -60,7 +55,7 @@
     </div>
 
     <div class="timer">
-        <h1><b>15:00</b></h1>
+        <h1 id="timer"><b>init...</b></h1>
     </div>
 
     <div class="nextquota">
