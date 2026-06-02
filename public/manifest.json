@@ -1,20 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Chrome extension Boilerplate",
+  "name": "be-fit chrome extension",
   "version": "1.0",
-  "description": "Chrome extension React and Vite Boilerplate",
+  "description": "A free open-source browser extension that reminds everyone staring at a screen to stay fit and drop 20. https://github.com/Bambaclad1/be-fit-extension",
   "action": {
     "default_popup": "index.html",
     "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+      "16": "16x16.png",
+      "48": "48x48.png",
+      "128": "128x128.png"
     }
   },
   "permissions": [],
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "16x16.png",
+    "48": "48x48.png",
+    "128": "128x128.png"
   }
 }

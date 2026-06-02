@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>be-fit popup</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <p><span><b>be-fit</b></span></p>
+            </div>
+
+            <div class="settings">
+                <img src="./icon/settings.png" alt="settings" width="36" height="36" id="settingsBtn">
+
+                <div id="settingsMenu" class="settings-menu">
+                    <p class="mini-label">be-fit menu</p>
+                    <h2>configure window</h2>
+                    <hr>
+
+                    <div class="setting">
+                        <div class="row">
+                            <span>interval timer</span>
+                            <span class="range-value" data-suffix=" min"></span>
+                        </div>
+                        <input type="range" min="5" max="60" value="15">
+                    </div>
+
+                    <div class="setting">
+                        <div class="row">
+                            <span>push-ups</span>
+                            <span class="range-value" data-suffix=" push-ups"></span>
+                        </div>
+                        <input type="range" min="1" max="50" value="10">
+                    </div>
+
+                    <div class="setting">
+                        <div class="row">
+                            <span>volume</span>
+                            <span class="range-value" data-suffix=" %"></span>
+                        </div>
+                        <input type="range" min="1" max="100" value="25">
+                    </div>
+
+                    <button class="save-btn">save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="timer">
+        <h1><b>15:00</b></h1>
+    </div>
+
+    <div class="nextquota">
+        <h2>Next: 10 Push-Ups</h2>
+    </div>
+
+    <div class="quote">
+        <p><i>"When you think that you are done, you're only 40% in to what your body's capable of doing."</i></p>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
