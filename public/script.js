@@ -15,44 +15,47 @@ document.addEventListener("click", (e) => {
 
 // Settings value logic
 document.querySelectorAll('.setting').forEach(setting => {
-    const input = setting.querySelector('input[type="range"]');
-    const label = setting.querySelector('.range-value');
-    const suffix = label.dataset.suffix;
+  const input = setting.querySelector('input[type="range"]');
+  const label = setting.querySelector('.range-value');
+  const suffix = label.dataset.suffix;
 
+  label.textContent = input.value + suffix;
+
+  input.addEventListener('input', () => {
     label.textContent = input.value + suffix;
-
-    input.addEventListener('input', () => {
-        label.textContent = input.value + suffix;
-    });
+  });
 });
 
-
-
-// Timer logic 
+// timer display working with local storage
 const intervalSlider = document.getElementById("intervalTimer");
-var countDownDate = Date.now() + (parseInt(intervalSlider.value) * 60 * 1000);
-var x = setInterval(function(){
-  var now = new Date().getTime();
 
-  var distance = countDownDate - now;
+function updateDisplay() {
+  chrome.storage.local.get('alarmEnd', ({ alarmEnd }) => {
+    if (!alarmEnd) return;
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const distance = alarmEnd - Date.now();
 
-  document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+    if (distance <= 0) {
+      document.getElementById("timer").innerHTML = "fin";
+      return;
+    }
 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "fin";
-  }
-})
+    const minutes = Math.floor(distance / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("timer").innerHTML = 
+      `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  });
+}
 
+// tick display every second
+setInterval(updateDisplay, 1000);
+updateDisplay(); // run immediately on popup open
+
+// when slider changes, restart the alarm with new value
 intervalSlider.addEventListener("input", () => {
+  const minutes = parseInt(intervalSlider.value);
 
-    countDownDate =
-        Date.now() +
-        parseInt(intervalSlider.value) * 60 * 1000;
-
+  chrome.alarms.clear('myTimer', () => {
+    chrome.runtime.sendMessage({ action: 'startAlarm', minutes });
+  });
 });
