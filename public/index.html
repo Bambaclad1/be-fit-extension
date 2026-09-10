@@ -9,66 +9,167 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">
-                <p><span><b>be-fit</b></span></p>
+    <div class="app">
+        <header class="topbar">
+            <div class="wordmark">
+                <span class="wordmark-row"><span>be-fit</span><b id="gogginsBadge" class="goggins-badge"
+                        hidden>+ goggins mode</b></span>
+            </div>
+            <button id="settingsBtn" class="icon-btn" aria-label="Settings" aria-expanded="false">
+                <img src="./icon/settings.png" alt="" width="20" height="20">
+            </button>
+        </header>
+
+        <main id="screen-idle" class="screen" data-screen="idle">
+            <p class="headline" id="nextQuota">Next: 10 Push-Ups</p>
+            <p class="timer" id="timer">15:00</p>
+            <p class="quote" id="idleQuote">
+                <span id="idleQuoteText">&ldquo;When you think that you are done, you're only 40% in to what your
+                    body's capable of doing&rdquo;</span>
+                <span class="quote-author" id="idleQuoteAuthor">&mdash; David Goggins</span>
+            </p>
+        </main>
+
+        <main id="screen-prompt" class="screen" data-screen="prompt" hidden>
+            <p class="reason" id="promptReason">Prove yourself strength.</p>
+            <p class="headline" id="promptHeadline">Do 10 push-ups.</p>
+            <div class="actions">
+                <button class="btn" id="doneBtn">Done</button>
+                <button class="btn btn-ghost" id="failBtn" hidden>Fail</button>
+            </div>
+            <p class="quote" id="promptQuote">
+                <span id="promptQuoteText">&ldquo;When you think that you are done, you're only 40% in to what your
+                    body's capable of doing&rdquo;</span>
+                <span class="quote-author">&mdash; David Goggins</span>
+            </p>
+        </main>
+
+        <main id="screen-fail" class="screen" data-screen="fail" hidden>
+            <p class="fail-message" id="failMessage"></p>
+            <p class="timer timer-sm" id="failCountdown">01:00</p>
+            <p class="fail-task"><span id="failTask">10</span> pushups</p>
+            <p class="fail-status">Getting ready&hellip;</p>
+        </main>
+
+        <aside id="settingsMenu" class="panel" hidden>
+        <p class="mini-label">be-fit menu</p>
+        <h2>Configure Window</h2>
+        <hr>
+
+        <div class="panel-body">
+            <div class="setting">
+                <div class="row">
+                    <span>Interval Timer</span>
+                    <span class="range-hint">Minutes 5-60</span>
+                </div>
+                <input id="intervalTimer" type="range" min="5" max="60" value="15">
+                <span class="range-value" id="intervalValue"></span>
             </div>
 
-            <div class="settings">
-                <img src="./icon/settings.png" alt="settings" width="36" height="36" id="settingsBtn">
-
-                <div id="settingsMenu" class="settings-menu">
-                    <p class="mini-label">be-fit menu</p>
-                    <h2>configure window</h2>
-                    <hr>
-
-                    <div class="setting">
-                        <div class="row">
-                            <span>interval timer</span>
-                            <span class="range-value" data-suffix=" min"></span>
-                        </div>
-                        <input id="intervalTimer" type="range" min="15" max="60" value="15">
-                    </div>  
-
-                    <div class="setting">
-                        <div class="row">
-                            <span>push-ups</span>
-                            <span class="range-value" data-suffix=" push-ups"></span>
-                        </div>
-                        <input type="range" min="1" max="50" value="10">
-                    </div>
-
-                    <div class="setting">
-                        <div class="row">
-                            <span>volume</span>
-                            <span class="range-value" data-suffix=" %"></span>
-                        </div>
-                        <input type="range" min="1" max="100" value="25">
-                    </div>
-
-                    <button class="save-btn">save</button>
+            <div class="setting">
+                <div class="row">
+                    <span>Push-ups</span>
+                    <span class="range-hint">Amount 1-50</span>
                 </div>
+                <input id="pushupsAmount" type="range" min="1" max="50" value="10">
+                <span class="range-value" id="pushupsValue"></span>
+            </div>
+
+            <div class="setting">
+                <div class="row">
+                    <span>Volume</span>
+                    <span class="range-hint">Percentage 1-100</span>
+                </div>
+                <input id="volume" type="range" min="1" max="100" value="25">
+                <span class="range-value" id="volumeValue"></span>
+            </div>
+
+            <button class="save-btn" id="saveBtn">Save</button>
+
+            <div class="toggle-row">
+                <div>
+                    <span>Randomized Reps</span>
+                    <p class="toggle-desc" id="randomizerDesc">Off &mdash; uses a fixed push-up amount.</p>
+                    <button class="link-btn link-btn-quiet" id="randomizerDisableBtn" hidden>Turn off</button>
+                </div>
+                <button class="link-btn" id="randomizerBtn">Enable</button>
+            </div>
+
+            <div class="toggle-row">
+                <div>
+                    <span>Goggins Mode</span>
+                    <p class="toggle-desc">Harder quotes, a fail button, and a streak to protect.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="gogginsToggle">
+                    <span class="switch-track"></span>
+                </label>
+            </div>
+
+            <div class="toggle-row">
+                <div>
+                    <span>Notifications</span>
+                    <p class="toggle-desc">Show a system notification when it's time to move.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="notificationsToggle" checked>
+                    <span class="switch-track"></span>
+                </label>
+            </div>
+
+            <div id="gogginsExtras" class="goggins-extras" hidden>
+                <p class="mini-label">goggins menu</p>
+                <div class="menu-item">
+                    <span>Total High Score</span>
+                    <span class="menu-item-value" id="highScoreValue">0</span>
+                </div>
+                <a class="menu-item menu-item-link" href="credits.html" target="_blank" rel="noopener">
+                    <span>About / Author</span>
+                    <span class="menu-item-value">&rsaquo;</span>
+                </a>
+            </div>
+
+            <p class="note">More customizable settings in a full fledged application! coming soon, we hope :)</p>
+            <p class="credit">made with &hearts; 4 the game by raman</p>
+        </div>
+    </aside>
+
+    <aside id="onboarding" class="panel onboarding" hidden>
+        <div class="onboarding-header">
+            <div>
+                <p class="mini-label">be-fit menu</p>
+                <h2>Randomized Reps <span class="step-count" id="onboardingStep">1/3</span></h2>
+            </div>
+            <button class="btn btn-outline btn-small" id="onboardingBack">Back</button>
+        </div>
+        <hr>
+
+        <div class="onboarding-body">
+            <div class="onboarding-step" data-step="1">
+                <p class="question">What has been your recent MAX push-ups you were able to hit?</p>
+                <p class="question-hint">(Answering accurately will make you benefit more from this extension.)</p>
+                <input class="number-field" id="maxPushupsInput" type="number" min="1" max="500" value="20">
+            </div>
+
+            <div class="onboarding-step" data-step="2" hidden>
+                <p class="question">How much reps can you hit comfortably?</p>
+                <p class="question-hint">(Answering accurately will make you benefit more from this extension.)</p>
+                <input class="number-field" id="comfortableRepsInput" type="number" min="1" max="500" value="10">
+            </div>
+
+            <div class="onboarding-step" data-step="3" hidden>
+                <p class="question">How quickly do you recover between push-up sets?</p>
+                <p class="question-hint">(Answering accurately will make you benefit more from this extension.)</p>
+                <input id="recoverySpeedInput" type="range" min="0" max="100" value="50">
+                <span class="range-value" id="recoverySpeedLabel">Medium</span>
             </div>
         </div>
-    </div>
+
+        <button class="btn onboarding-continue" id="onboardingContinue">Continue</button>
+        </aside>
     </div>
 
-    <div class="timer">
-        <h1 id="timer"><b>init...</b></h1>
-    </div>
-
-    <div class="nextquota">
-        <h2>Next: 10 Push-Ups</h2>
-    </div>
-
-    <div class="quote">
-        <p><i>"When you think that you are done, you're only 40% in to what your body's capable of doing."</i></p>
-    </div>
-    </div>
-
-    <script src="script.js"></script>
-
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>
