@@ -561,3 +561,13 @@ input[type="range"]::-moz-range-thumb {
     margin-top: 18px;
     border-radius: 10px;
 }
+
+/* ---------------------------------------------------------------------- */
+/* Debug                                                                   */
+/* ---------------------------------------------------------------------- */
+.debug-row {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--color-border-soft);
+    text-align: center;
+}

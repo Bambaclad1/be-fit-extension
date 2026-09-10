@@ -34,6 +34,9 @@ async function startMainAlarm(minutes) {
   const { target, setsDoneToday, lastResetDate } = await nextTarget(settings, state);
 
   chrome.alarms.clear(ALARM_MAIN);
+  // Sub-minute periods (e.g. the debug "5s timer" button) only fire on their
+  // real schedule for unpacked/dev-mode extensions; Chrome clamps them to
+  // 1 minute once the extension is packed/published.
   chrome.alarms.create(ALARM_MAIN, { periodInMinutes: minutes });
 
   const idleQuote = settings.gogginsMode ? pickRandom(GOGGINS_RUNNING_QUOTES) : "";

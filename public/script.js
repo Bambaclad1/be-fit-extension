@@ -51,6 +51,8 @@ const dom = {
   comfortableRepsInput: el("comfortableRepsInput"),
   recoverySpeedInput: el("recoverySpeedInput"),
   recoverySpeedLabel: el("recoverySpeedLabel"),
+
+  debugFastTimerBtn: el("debugFastTimerBtn"),
 };
 
 function formatClock(ms) {
@@ -254,6 +256,14 @@ dom.onboardingContinue.addEventListener("click", async () => {
   chrome.runtime.sendMessage({ action: "startAlarm", minutes: settings.intervalMinutes });
   dom.onboarding.hidden = true;
   openSettings();
+});
+
+/* ---------------------------------------------------------------------- */
+/* Debug                                                                   */
+/* ---------------------------------------------------------------------- */
+dom.debugFastTimerBtn.addEventListener("click", () => {
+  chrome.runtime.sendMessage({ action: "startAlarm", minutes: 5 / 60 });
+  closeSettings();
 });
 
 /* ---------------------------------------------------------------------- */
